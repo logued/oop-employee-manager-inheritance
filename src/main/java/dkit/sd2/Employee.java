@@ -13,13 +13,6 @@ public class Employee
         this.rate = rate;
     }
 
-    public Employee(String name)
-    {
-        this.name = name;
-        this.hours = 0;
-        this.rate = 0;
-    }
-
     public Employee()
     {
         this.name = "";
@@ -62,7 +55,7 @@ public class Employee
         return  this.rate * this.hours;
     }
 
-    @Override                  // overrides toString() from Object class
+    @Override                  // overrides toString() inherited from Object class
     public String toString()
     {
         return "Employee{" +

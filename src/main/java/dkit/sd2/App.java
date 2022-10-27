@@ -3,9 +3,13 @@ package dkit.sd2;
 import java.util.ArrayList;
 
 /**
- * // October 2021
+ * // October 2022
  * Demonstrates INHERITANCE
  * Manager class inherits from (extends) Employee class.
+ * Use of:
+ * - extends             - create inheritance relationship between classes
+ * - super()             - call superclass constructor
+ * - super.methodName()  - call a superclass method
  */
 public class App {
     public static void main(String[] args) {
@@ -17,7 +21,6 @@ public class App {
     public void start() {
         Employee emp1 = new Employee("John Brady", 35, 123.45);
         Employee emp2 = new Employee("Mary Ryan", 20, 198.45);
-        Employee emp3 = new Employee("Alice Reilly");
 
         Manager mgr1 = new Manager("Bob", 40, 123.5, 300);
         Manager mgr2 = new Manager("Martin", 35, 113.5, 200);
@@ -30,17 +33,17 @@ public class App {
         System.out.println(mgr1.toString());
         System.out.println("\n\n");
 
-        // An ArrayList of type Employee can store references to both Employee objects
+        // An ArrayList of type "Employee" can store references to both Employee objects
         // and Manager objects, because a Manager is a "type-of" Employee.
 
         ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(emp1);
+
+        employees.add(emp1);    // Employees
         employees.add(emp2);
-        employees.add(emp3);
-        employees.add(mgr1);
+        employees.add(mgr1);    // Managers
         employees.add(mgr2);
 
-//      TODO#1 Write code to output all details from the arrayList (using toString())
+//      TODO#1 Write loop to output details of all objects from the arrayList (using toString())
         System.out.println("\nDetails from Arraylist:");
 
 //      TODO#2 Write code to display only the name & salaries of all employees

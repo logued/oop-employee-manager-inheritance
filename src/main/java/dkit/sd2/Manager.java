@@ -7,19 +7,20 @@ package dkit.sd2;
    - Manager inherits all the instance variable and methods
      from its superclass (Employee), and adds some of its own.
 
-     A Manager is a "type-of" Employee.
+     A Manager is a "type-of" Employee.  Manager "is-an" Employee.
+     Known often as an "is-a" relationship.
  */
 
 public class Manager extends Employee      // Manager inherits from Employee
 {
-                            // Manager object will inherit all Employee fields and methods,
-    private double bonus;   // and adds one additional field called 'bonus'
+                            // Manager object will inherit all Employee fields and methods
+    private double bonus;   // Add one additional field called 'bonus'
 
     public Manager(String name, double hours, double rate, double bonus)
     {
         super(name, hours, rate);   // calls the constructor of the superclass (Employee)
                                     // to let it initialize the Employee fields.
-        this.bonus = bonus;
+        this.bonus = bonus;     // initialize the field defined in this class.
     }
 
     public Manager()       // the 'no-argument' construct
@@ -38,12 +39,16 @@ public class Manager extends Employee      // Manager inherits from Employee
         this.bonus = bonus;
     }
 
-    // override (replace) the getSalary() method defined in Employee parent class
+    // override (replace) the getSalary() method defined in Employee parent class.
+    // The salary must be calculated in a different way for a Manager, so we must
+    // override the getSalary() method from Employee and implement the new salary
+    // calculation in this Manager class.
+    //
     @Override
     public double getSalary()
     {
         // call the getSalary() method from the SUPERclass, i.e. Employee
-        // and add the manager's bonus.
+        // and add the manager's bonus to that salary.
         return super.getSalary() + this.bonus;
     }
 
@@ -59,10 +64,10 @@ public class Manager extends Employee      // Manager inherits from Employee
 //  The following toString() version is more useful as it returns the fields defined
 //  in Employee and the field defined in Manager.
 
-//    @Override
-//    public String toString()
-//    {
-//        return "Manager{" + "bonus=" + bonus + "{" + super.toString() + "}}";
-//    }
+    @Override
+    public String toString()
+    {
+        return "Manager{" + "bonus=" + bonus + "{" + super.toString() + "}}";
+    }
 
 }
