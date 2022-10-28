@@ -33,8 +33,29 @@ public class App {
         System.out.println(mgr1.toString());
         System.out.println("\n\n");
 
-        // An ArrayList of type "Employee" can store references to both Employee objects
+        // A reference of type Employee can be used to refer to a Manager object,
+        // as a Manager is an Employee. If this is the case, then only the methods defined in
+        // Employee can be called on the reference.  (i.e. mgr3.xxxx )
+        Employee emp3 = new Manager("Louis", 38, 123.5, 600);
+
+        System.out.println("emp3 = " + emp3.toString() );
+        // note toString() of the Manager object is called - NOT of the manager.
+
+        // We can NOT call emp3.getBonus(), because it is not defined in Employee
+
+        // We can CAST the reference type from one type to another.
+        // Here, we can cast a reference of type Employee to type Manager, because
+        // we know that the object is a Manager type. When we do this, the new reference
+        // has access to the methods defined for a Manager.
+        Manager mgr3 = (Manager) emp3; // cast the reference type to type Manager
+        System.out.println("mgr3.getSalary() = " + mgr3.getSalary());
+            // calls the getSalary for the object (i.e. for the Manager class)
+
+        // POLYMORPHISM
+        // An ArrayList Employees can store references to both Employee objects
         // and Manager objects, because a Manager is a "type-of" Employee.
+        // The ArrayList elements are actually references of type Employee, that
+        // refer to Employee (or Manager) objects.
 
         ArrayList<Employee> employees = new ArrayList<>();
 
@@ -43,21 +64,22 @@ public class App {
         employees.add(mgr1);    // Managers
         employees.add(mgr2);
 
-//      TODO#1 Write loop to output details of all objects from the arrayList (using toString())
+//      TODO#1 Write a loop to output details of all objects from the ArrayList (use toString())
+        // Note that the version of toString() called is dependent on the object (not the reference)
         System.out.println("\nDetails from Arraylist:");
 
-//      TODO#2 Write code to display only the name & salaries of all employees
+//      TODO#2 Write code to display only the name & salaries of all employees from the list
         System.out.println("\nNames & salaries:");
 
 
-//      TODO#3 Examine the following code
+//      TODO#3 Examine the following commented out code
 //        The TYPE of a reference is important.
 //        A reference of type Employee can refer to a Manager because a Manager is an Employee (due to inheritance)
 //        A reference of type Manager can NOT refer to an Employee type object, as an employee is not a Manager
 //
 //        Employee emp = mgr1;  // Is this OK - why or why not?
 //
-//        Manager mgr  = emp1;  // Is this OK - why or why not?
+//        Manager mgr  = emp1;  // Is this OK - why or why not? How to fix it?
 
 //      TODO#4 Output only the Managers - use "instanceof" operator and toString()
 
