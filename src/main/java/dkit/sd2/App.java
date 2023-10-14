@@ -1,10 +1,13 @@
-package dkit.sd2;
-
+package dkit.sd2;               // October 2023
 import java.util.ArrayList;
-
 /**
- * // October 2022
  * Demonstrates INHERITANCE
+ * An Employee class is defined to store employee details and salary information.
+ * A Manager class is defined to EXTEND the Employee class thus inheriting its
+ * data fields and its methods. Additional fields and methods can be added in the Manager class.
+ * The Manager class is a specialisation of the Employee (usually having extra or different
+ * behaviour as defined in its methods)
+ *
  * Manager class inherits from (extends) Employee class.
  * Use of:
  * - extends             - create inheritance relationship between classes
@@ -13,7 +16,7 @@ import java.util.ArrayList;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("\n*** Inheritance Demo - Employee & Manager ***");
+        System.out.println("\n*** Inheritance Demo - Manager \"is an\" Employee ***");
         App app = new App();
         app.start();
     }
@@ -21,27 +24,31 @@ public class App {
     public void start() {
         Employee emp1 = new Employee("John Brady", 35, 123.45);
         Employee emp2 = new Employee("Mary Ryan", 20, 198.45);
+        System.out.println(emp1);
+        System.out.println(emp2.toString());
 
         Manager mgr1 = new Manager("Bob", 40, 123.5, 300);
         Manager mgr2 = new Manager("Martin", 35, 113.5, 200);
-
-        System.out.println("m1 salary = " + mgr1.getSalary());
-
-        // toString() - test the versions defined in each class
-        System.out.println("\ntoString() Test:");
-        System.out.println(emp1.toString());
         System.out.println(mgr1.toString());
-        System.out.println("\n\n");
+        System.out.println(mgr2.toString());
+
+        System.out.println("emp1 salary = " + emp1.getSalary());
+        System.out.println("mgr1 salary = " + mgr1.getSalary());
 
         // A reference of type Employee can be used to refer to a Manager object,
         // as a Manager is an Employee. If this is the case, then only the methods defined in
-        // Employee can be called on the reference.  (i.e. mgr3.xxxx )
+        // Employee can be called on the reference.  (i.e. mgr3.xxxx ) as the reference type
+        // determines which methods are callable. (e.g. getBonus() can not be called)
+        //
         Employee emp3 = new Manager("Louis", 38, 123.5, 600);
 
         System.out.println("emp3 = " + emp3.toString() );
-        // note toString() of the Manager object is called - NOT of the manager.
+        // note: toString() of the Manager object is called as the object is
+        //       of type Manager (even though the reference is of type Employee)
+        //       (this is called polymorphism)
 
         // We can NOT call emp3.getBonus(), because it is not defined in Employee
+        // and the emp3 variable is of type Employee.
 
         // We can CAST the reference type from one type to another.
         // Here, we can cast a reference of type Employee to type Manager, because
@@ -52,7 +59,7 @@ public class App {
             // calls the getSalary for the object (i.e. for the Manager class)
 
         // POLYMORPHISM
-        // An ArrayList Employees can store references to both Employee objects
+        // An ArrayList of Employee type can store references to both Employee objects
         // and Manager objects, because a Manager is a "type-of" Employee.
         // The ArrayList elements are actually references of type Employee, that
         // refer to Employee (or Manager) objects.

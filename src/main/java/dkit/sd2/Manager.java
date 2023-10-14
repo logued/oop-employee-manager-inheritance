@@ -6,7 +6,12 @@ package dkit.sd2;
    - Employee is known as the Super-Class, and Manager as the Sub-Class.
    - Manager inherits all the instance variable and methods
      from its superclass (Employee), and
-     adds some of its ow and overrides getSalary()
+     adds some of its own - getBonus(),
+      and overrides other methods - getSalary()
+
+      The idea is that the Manager class can reuse the functionality that is already
+      coded in the Employee class, but can choose to modify selected behaviour ( by overriding methods),
+      or add to the functionality (by defining new fields and methods)
 
      A Manager is a "type-of" Employee.  Manager "is-an" Employee.
      Known often as an "is-a" relationship.
@@ -21,10 +26,11 @@ public class Manager extends Employee      // Manager inherits from Employee
     {
         super(name, hours, rate);   // calls the constructor of the superclass (Employee)
                                     // to let it initialize the Employee fields.
+                // necessary, as code here has no access to private  fields of the Employee superclass.
         this.bonus = bonus;     // initialize the field defined in this class.
     }
 
-    public Manager()       // the 'no-argument' construct
+    public Manager()       // the 'no-argument' constructor
     {
         super();                // calls the no-arg constructor of the superclass (Employee)
         this.bonus = 0;
@@ -42,8 +48,8 @@ public class Manager extends Employee      // Manager inherits from Employee
 
     // override (replace) the getSalary() method defined in Employee parent class.
     // The salary must be calculated in a different way for a Manager, so we must
-    // override the getSalary() method from Employee and implement the new salary
-    // calculation in this Manager class.
+    // *override* the getSalary() method from Employee by implementing the new salary
+    // calculation in this method.
     //
     @Override
     public double getSalary()
