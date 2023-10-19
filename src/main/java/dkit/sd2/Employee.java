@@ -1,8 +1,9 @@
 package dkit.sd2;
-//The Employee class is a normal class (A POJO Plain Old Java Object)
+// The Employee class is a normal class (A POJO Plain Old Java Object)
 //
-// When it is extended by the Manager, we call this Employee the superclass,
-// can the Manger class is called the subclass.
+// When it is extended by the Manager class,
+// then we call this Employee class the superclass,
+// and the Manger class is called the subclass.
 
 public class Employee
 {

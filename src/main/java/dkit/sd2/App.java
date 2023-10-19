@@ -52,16 +52,22 @@ public class App {
 
         // We can CAST the reference type from one type to another.
         // Here, we can cast a reference of type Employee to type Manager, because
-        // we know that the object is a Manager type. When we do this, the new reference
+        // we know that the object in question is a Manager type.
+        // When we cast the reference, its type changes, and the new reference
         // has access to the methods defined for a Manager.
         Manager mgr3 = (Manager) emp3; // cast the reference type to type Manager
         System.out.println("mgr3.getSalary() = " + mgr3.getSalary());
             // calls the getSalary for the object (i.e. for the Manager class)
 
+        // Before we make a cast we should test to see if the object is of the required type.
+        // Here, emp3 refers to a Manager type object.  We can test to see what type of object
+        // the reference emp3 is referring to.  If it is an instance of Manager, then it is safe to
+        // cast the reference type from Employee to type Manager.
+
         // POLYMORPHISM
         // An ArrayList of Employee type can store references to both Employee objects
         // and Manager objects, because a Manager is a "type-of" Employee.
-        // The ArrayList elements are actually references of type Employee, that
+        // The ArrayList elements are actually references of type Employee that
         // refer to Employee (or Manager) objects.
 
         ArrayList<Employee> employees = new ArrayList<>();
